@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brief Campaña FreshBox</title>
+  <title>Brief Campaña FreshBox 2026</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,16 +11,19 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Estilos Personalizados y Animaciones -->
+  <!-- Estilos Personalizados, Animaciones y Motor de Traducción -->
   <style>
     body {
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
-
-    /* SISTEMA DE TRADUCCIÓN: Evita trabarse en móviles */
+    
+    /* MOTOR DE TRADUCCIÓN */
     body.lang-es .lang-en { display: none !important; }
     body.lang-en .lang-es { display: none !important; }
-    
+
+    /* Animaciones (Se removió will-change para evitar cuellos de botella con los videos) */
     .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
     .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -35,8 +38,8 @@
     .reveal-delay-3 { transition-delay: 300ms; }
     .reveal-delay-4 { transition-delay: 400ms; }
     
-    .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
-    .glass-card-dark { background: rgba(20, 20, 22, 0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+    .glass-card-dark { background: rgba(20, 20, 22, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
     
     .float { animation: float 6s ease-in-out infinite; }
     .float-delayed { animation: float 6s ease-in-out 3s infinite; }
@@ -58,9 +61,9 @@
 <body class="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] selection:bg-blue-200 selection:text-blue-900 overflow-x-hidden relative lang-es">
 
   <!-- Botón Flotante Traductor -->
-  <button onclick="toggleLanguage()" class="fixed bottom-6 right-6 z-[300] bg-black text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-2 font-bold hover:scale-105 transition-all active:scale-95 border border-white/20">
+  <button onclick="toggleLanguage()" class="fixed bottom-6 right-6 z-[300] bg-black text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 font-bold hover:scale-105 transition-all">
     <i data-lucide="globe" class="w-5 h-5"></i>
-    <span id="lang-indicator">ES</span>
+    <span id="lang-indicator">EN</span>
   </button>
 
   <!-- Navigation -->
@@ -73,161 +76,207 @@
           <span class="font-semibold text-blue-600 group-hover:text-black transition-colors">FreshBox®</span>
         </div>
         <div class="flex space-x-4 sm:space-x-8 overflow-x-auto no-scrollbar ml-4 py-2" id="nav-links">
-          <button onclick="scrollToSection('contexto')" data-target="contexto" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full"><span class="lang-es">Contexto</span><span class="lang-en">Context</span></button>
-          <button onclick="scrollToSection('estrategia')" data-target="estrategia" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full"><span class="lang-es">Estrategia</span><span class="lang-en">Strategy</span></button>
-          <button onclick="scrollToSection('pilares')" data-target="pilares" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full"><span class="lang-es">Pilares</span><span class="lang-en">Pillars</span></button>
-          <button onclick="scrollToSection('ecosistema')" data-target="ecosistema" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full"><span class="lang-es">Canales</span><span class="lang-en">Channels</span></button>
-          <button onclick="scrollToSection('operativa')" data-target="operativa" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full"><span class="lang-es">Timeline</span><span class="lang-en">Timeline</span></button>
-          <button onclick="scrollToSection('alianza')" data-target="alianza" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full"><span class="lang-es">Alianza</span><span class="lang-en">Alliance</span></button>
+          <button onclick="scrollToSection('contexto')" data-target="contexto" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full">
+            <span class="lang-es">Contexto</span><span class="lang-en">Context</span>
+          </button>
+          <button onclick="scrollToSection('estrategia')" data-target="estrategia" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full">
+            <span class="lang-es">Estrategia</span><span class="lang-en">Strategy</span>
+          </button>
+          <button onclick="scrollToSection('pilares')" data-target="pilares" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full">
+            <span class="lang-es">Pilares</span><span class="lang-en">Pillars</span>
+          </button>
+          <button onclick="scrollToSection('ecosistema')" data-target="ecosistema" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full">
+            <span class="lang-es">Canales</span><span class="lang-en">Channels</span>
+          </button>
+          <button onclick="scrollToSection('operativa')" data-target="operativa" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full">
+            <span class="lang-es">Timeline</span><span class="lang-en">Timeline</span>
+          </button>
+          <button onclick="scrollToSection('alianza')" data-target="alianza" class="nav-btn hover:text-black transition-all whitespace-nowrap px-2 py-1 rounded-full">
+            <span class="lang-es">Alianza</span><span class="lang-en">Alliance</span>
+          </button>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- 1. Hero Section -->
-  <section id="hero" class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 bg-white flex flex-col items-center text-center relative overflow-hidden">
+  <section id="hero" class="pt-32 pb-16 md:pt-48 md:pb-32 px-4 bg-white flex flex-col items-center text-center relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/40 via-transparent to-transparent pointer-events-none"></div>
     <div class="relative z-10 flex flex-col items-center max-w-5xl">
-      <div class="reveal inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-blue-600 text-xs font-bold uppercase tracking-widest mb-8 border border-blue-100 shadow-lg shadow-blue-500/10 relative overflow-hidden group">
+      <div class="reveal inline-flex items-center gap-2 px-4 md:px-5 py-2 rounded-full bg-white text-blue-600 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-8 border border-blue-100 shadow-lg shadow-blue-500/10 relative overflow-hidden group">
         <div class="absolute inset-0 shimmer opacity-50 group-hover:opacity-100 transition-opacity"></div>
         <i data-lucide="sparkles" class="w-3.5 h-3.5 relative z-10"></i>
-        <span class="relative z-10"><span class="lang-es">Master Campaign 2026</span><span class="lang-en">Master Campaign 2026</span></span>
+        <span class="relative z-10 lang-es">Master Campaign 2026</span>
+        <span class="relative z-10 lang-en">Master Campaign 2026</span>
       </div>
       
       <h1 class="reveal reveal-delay-1 text-5xl md:text-8xl font-bold tracking-tighter text-black mb-6 leading-[1.05]">
-        <span class="lang-es">Temporada de <br class="hidden md:block"/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-teal-500">Mariscos FreshBox®</span></span>
-        <span class="lang-en">FreshBox® <br class="hidden md:block"/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-teal-500">Seafood Season</span></span>
+        <span class="lang-es">Temporada de <br class="hidden md:block"/></span>
+        <span class="lang-en">FreshBox® <br class="hidden md:block"/></span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-teal-500">
+          <span class="lang-es">Mariscos FreshBox®</span><span class="lang-en">Seafood Season</span>
+        </span>
       </h1>
       
       <p class="reveal reveal-delay-2 text-xl md:text-3xl font-medium text-[#86868B] mb-4 tracking-tight max-w-3xl">
         <span class="lang-es">"Calidad que se nota. Trazabilidad que se respalda."</span>
         <span class="lang-en">"Quality you can taste. Traceability you can trust."</span>
       </p>
-      <p class="reveal reveal-delay-2 text-lg md:text-xl font-bold text-black mb-10 tracking-tight max-w-3xl">
+      <p class="reveal reveal-delay-2 text-base md:text-xl font-bold text-black mb-10 tracking-tight max-w-3xl">
         <span class="lang-es">Claim comercial: Consume hoy y siempre mariscos de calidad.</span>
         <span class="lang-en">Commercial Claim: Consume quality seafood, today and always.</span>
       </p>
       
-      <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-4 mt-4">
-        <button onclick="scrollToSection('contexto')" class="bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-neutral-800 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,0,0,0.2)] transition-all flex items-center gap-3">
-          <span class="lang-es">Explorar Estrategia</span><span class="lang-en">Explore Strategy</span> <i data-lucide="arrow-right" class="w-4.5 h-4.5"></i>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row flex-wrap justify-center gap-4 mt-4 w-full sm:w-auto px-4">
+        <button onclick="scrollToSection('contexto')" class="bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-neutral-800 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,0,0,0.2)] transition-all flex items-center justify-center gap-3">
+          <span class="lang-es">Explorar Estrategia</span><span class="lang-en">Explore Strategy</span> 
+          <i data-lucide="arrow-right" class="w-4.5 h-4.5"></i>
         </button>
-        <button onclick="openModal('cineHero')" class="bg-white text-black border border-neutral-200 px-8 py-4 rounded-full font-semibold hover:bg-neutral-50 hover:scale-105 transition-all flex items-center gap-3 shadow-sm">
-          <span class="lang-es">Ver Pieza Central</span><span class="lang-en">View Masterpiece</span> <i data-lucide="play" class="w-4.5 h-4.5"></i>
+        <button onclick="openModal('cineHero')" class="bg-white text-black border border-neutral-200 px-8 py-4 rounded-full font-semibold hover:bg-neutral-50 hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-sm">
+          <span class="lang-es">Ver Pieza Central</span><span class="lang-en">View Masterpiece</span> 
+          <i data-lucide="play" class="w-4.5 h-4.5"></i>
         </button>
       </div>
     </div>
 
-    <div class="reveal-scale reveal-delay-4 mt-24 w-full max-w-6xl rounded-[2.5rem] overflow-hidden shadow-2xl relative h-[400px] md:h-[650px] border border-neutral-200/50 float text-black">
+    <div class="reveal-scale reveal-delay-4 mt-16 md:mt-24 w-full max-w-6xl rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl relative h-64 md:h-[650px] border border-neutral-200/50 float text-black">
       <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&q=80&w=2000" alt="Mariscos Premium FreshBox" class="w-full h-full object-cover"/>
       <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
     </div>
   </section>
 
   <!-- 2. Contexto & Oportunidad -->
-  <section id="contexto" class="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+  <section id="contexto" class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-center mb-24 md:mb-32">
       <div class="reveal-left text-black">
         <div class="flex items-center gap-3 mb-4">
           <div class="h-[2px] w-8 bg-neutral-300"></div>
-          <h2 class="text-xs font-bold tracking-[0.2em] text-[#86868B] uppercase"><span class="lang-es">El Escenario</span><span class="lang-en">The Scenario</span></h2>
+          <h2 class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-[#86868B] uppercase">
+            <span class="lang-es">El Escenario</span><span class="lang-en">The Scenario</span>
+          </h2>
         </div>
         <h3 class="text-4xl md:text-6xl font-bold tracking-tighter text-black mb-8 leading-tight">
           <span class="lang-es">Problema de Negocio</span><span class="lang-en">Business Problem</span>
         </h3>
-        <ul class="space-y-6">
-          <li class="flex items-start gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
+        
+        <ul class="space-y-4 md:space-y-6">
+          <li class="flex items-start gap-4 md:gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
             <div class="mt-1 w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-500 shadow-inner">
               <i data-lucide="alert-circle" class="w-4.5 h-4.5"></i>
             </div>
             <div>
-              <span class="block text-lg font-bold text-black mb-1"><span class="lang-es">Alta Demanda Concentrada</span><span class="lang-en">Highly Concentrated Demand</span></span>
-              <span class="block text-neutral-500"><span class="lang-es">Semana Santa concentra la mayor demanda de mariscos.</span><span class="lang-en">Holy Week concentrates the highest seafood demand.</span></span>
+              <span class="block text-base md:text-lg font-bold text-black mb-1">
+                <span class="lang-es">Alta Demanda Concentrada</span><span class="lang-en">Highly Concentrated Demand</span>
+              </span>
+              <span class="block text-sm md:text-base text-neutral-500">
+                <span class="lang-es">Semana Santa concentra la mayor demanda de mariscos.</span><span class="lang-en">Holy Week concentrates the highest seafood demand.</span>
+              </span>
             </div>
           </li>
-          <li class="flex items-start gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
+          <li class="flex items-start gap-4 md:gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
             <div class="mt-1 w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-500 shadow-inner">
               <i data-lucide="alert-circle" class="w-4.5 h-4.5"></i>
             </div>
             <div>
-              <span class="block text-lg font-bold text-black mb-1"><span class="lang-es">Mercado Saturado</span><span class="lang-en">Saturated Market</span></span>
-              <span class="block text-neutral-500"><span class="lang-es">Competencia extrema enfocada en precio, descuidando calidad.</span><span class="lang-en">Extreme competition focused on price, neglecting quality.</span></span>
+              <span class="block text-base md:text-lg font-bold text-black mb-1">
+                <span class="lang-es">Mercado Saturado</span><span class="lang-en">Saturated Market</span>
+              </span>
+              <span class="block text-sm md:text-base text-neutral-500">
+                <span class="lang-es">Competencia extrema enfocada en precio, descuidando calidad.</span><span class="lang-en">Extreme price-focused competition, neglecting quality.</span>
+              </span>
             </div>
           </li>
-          <li class="flex items-start gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
+          <li class="flex items-start gap-4 md:gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
             <div class="mt-1 w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-500 shadow-inner">
               <i data-lucide="alert-circle" class="w-4.5 h-4.5"></i>
             </div>
             <div>
-              <span class="block text-lg font-bold text-black mb-1"><span class="lang-es">Riesgo Percibido</span><span class="lang-en">Perceived Risk</span></span>
-              <span class="block text-neutral-500"><span class="lang-es">Desconfianza por mal manejo del producto en puntos físicos.</span><span class="lang-en">Consumer distrust due to poor handling of products in physical stores.</span></span>
+              <span class="block text-base md:text-lg font-bold text-black mb-1">
+                <span class="lang-es">Riesgo Percibido</span><span class="lang-en">Perceived Risk</span>
+              </span>
+              <span class="block text-sm md:text-base text-neutral-500">
+                <span class="lang-es">Desconfianza por mal manejo del producto en puntos físicos.</span><span class="lang-en">Consumer distrust due to poor handling of products in physical stores.</span>
+              </span>
             </div>
           </li>
-          <li class="flex items-start gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
+          <li class="flex items-start gap-4 md:gap-5 p-4 rounded-2xl bg-white shadow-sm border border-neutral-100">
             <div class="mt-1 w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-500 shadow-inner">
               <i data-lucide="alert-circle" class="w-4.5 h-4.5"></i>
             </div>
             <div>
-              <span class="block text-lg font-bold text-black mb-1"><span class="lang-es">Compra Impulsiva</span><span class="lang-en">Impulsive Buying</span></span>
-              <span class="block text-neutral-500"><span class="lang-es">Transacciones mal planificadas que arruinan la experiencia.</span><span class="lang-en">Poorly planned transactions that ruin the consumption experience.</span></span>
+              <span class="block text-base md:text-lg font-bold text-black mb-1">
+                <span class="lang-es">Compra Impulsiva</span><span class="lang-en">Impulsive Buying</span>
+              </span>
+              <span class="block text-sm md:text-base text-neutral-500">
+                <span class="lang-es">Transacciones mal planificadas que arruinan la experiencia.</span><span class="lang-en">Poorly planned transactions that ruin the consumption experience.</span>
+              </span>
             </div>
           </li>
         </ul>
       </div>
-      <div class="reveal-right h-[500px] md:h-[600px] rounded-[3rem] overflow-hidden shadow-2xl relative group">
-        <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&q=80&w=1000" alt="Contexto mercado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"/>
+      <div class="reveal-right h-64 md:h-[600px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative group">
+        <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&q=80&w=1000" alt="Contexto mercado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" loading="lazy"/>
       </div>
     </div>
 
-    <div class="reveal-scale bg-[#111113] p-10 md:p-20 rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
-      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="reveal-scale bg-[#111113] p-8 md:p-20 rounded-[2rem] md:rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-blue-600/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none"></div>
       
-      <div class="grid lg:grid-cols-2 gap-16 relative z-10 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 md:gap-16 relative z-10 items-center">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-300 text-xs font-bold uppercase tracking-widest mb-6 border border-white/10 backdrop-blur-md">
-            <i data-lucide="target" class="w-3.5 h-3.5"></i> <span class="lang-es">Solución Estratégica</span><span class="lang-en">Strategic Solution</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-300 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 border border-white/10 backdrop-blur-md">
+            <i data-lucide="target" class="w-3.5 h-3.5"></i> 
+            <span class="lang-es">Solución Estratégica</span><span class="lang-en">Strategic Solution</span>
           </div>
-          <h4 class="text-4xl md:text-5xl font-bold mb-6 tracking-tighter"><span class="lang-es">La Oportunidad</span><span class="lang-en">The Opportunity</span></h4>
-          <p class="text-xl text-neutral-400 mb-8 leading-relaxed font-light">
+          <h4 class="text-3xl md:text-5xl font-bold mb-4 md:mb-6 tracking-tighter">
+            <span class="lang-es">La Oportunidad</span><span class="lang-en">The Opportunity</span>
+          </h4>
+          <p class="text-lg md:text-xl text-neutral-400 mb-8 leading-relaxed font-light">
             <span class="lang-es">Esta temporada es una <strong>ventana de venta agresiva + posicionamiento anual</strong>.</span>
-            <span class="lang-en">This season is an <strong>aggressive sales window + annual positioning platform</strong>.</span>
+            <span class="lang-en">This season is an <strong>aggressive sales window + annual positioning</strong>.</span>
           </p>
           
           <div class="space-y-6">
             <div>
-              <p class="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3"><span class="lang-es">Autoridad real en:</span><span class="lang-en">Real authority in:</span></p>
-              <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-white/5 rounded-xl text-sm font-medium border border-white/10"><span class="lang-es">Trazabilidad</span><span class="lang-en">Traceability</span></span>
-                <span class="px-4 py-2 bg-white/5 rounded-xl text-sm font-medium border border-white/10"><span class="lang-es">Cadena de frío</span><span class="lang-en">Cold Chain</span></span>
-                <span class="px-4 py-2 bg-white/5 rounded-xl text-sm font-medium border border-white/10"><span class="lang-es">Entrega a domicilio</span><span class="lang-en">Home Delivery</span></span>
+              <p class="text-[10px] md:text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3">
+                <span class="lang-es">Autoridad real en:</span><span class="lang-en">Real authority in:</span>
+              </p>
+              <div class="flex flex-wrap gap-2 md:gap-3">
+                <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-xl text-xs md:text-sm font-medium border border-white/10"><span class="lang-es">Trazabilidad</span><span class="lang-en">Traceability</span></span>
+                <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-xl text-xs md:text-sm font-medium border border-white/10"><span class="lang-es">Cadena de frío</span><span class="lang-en">Cold Chain</span></span>
+                <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 rounded-xl text-xs md:text-sm font-medium border border-white/10"><span class="lang-es">Entrega a domicilio</span><span class="lang-en">Home Delivery</span></span>
               </div>
             </div>
             <div>
-              <p class="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3"><span class="lang-es">El Consumidor Busca:</span><span class="lang-en">The Consumer Seeks:</span></p>
-              <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-xl text-sm font-medium border border-teal-500/20"><span class="lang-es">Seguridad</span><span class="lang-en">Safety</span></span>
-                <span class="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-xl text-sm font-medium border border-teal-500/20"><span class="lang-es">Conveniencia</span><span class="lang-en">Convenience</span></span>
-                <span class="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-xl text-sm font-medium border border-teal-500/20"><span class="lang-es">Experiencia premium en casa</span><span class="lang-en">Premium home experience</span></span>
+              <p class="text-[10px] md:text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3">
+                <span class="lang-es">El Consumidor Busca:</span><span class="lang-en">The Consumer Seeks:</span>
+              </p>
+              <div class="flex flex-wrap gap-2 md:gap-3">
+                <span class="px-3 py-1.5 md:px-4 md:py-2 bg-teal-500/10 text-teal-300 rounded-xl text-xs md:text-sm font-medium border border-teal-500/20"><span class="lang-es">Seguridad</span><span class="lang-en">Safety</span></span>
+                <span class="px-3 py-1.5 md:px-4 md:py-2 bg-teal-500/10 text-teal-300 rounded-xl text-xs md:text-sm font-medium border border-teal-500/20"><span class="lang-es">Conveniencia</span><span class="lang-en">Convenience</span></span>
+                <span class="px-3 py-1.5 md:px-4 md:py-2 bg-teal-500/10 text-teal-300 rounded-xl text-xs md:text-sm font-medium border border-teal-500/20"><span class="lang-es">Experiencia premium en casa</span><span class="lang-en">Premium home experience</span></span>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="glass-card-dark p-10 rounded-[2.5rem] relative overflow-hidden group">
-          <h4 class="text-2xl font-bold mb-6 flex items-center gap-3 relative z-10">
-            <i data-lucide="users" class="text-blue-400 w-6 h-6"></i> <span class="lang-es">Target y Objetivos</span><span class="lang-en">Target & Objectives</span>
+        <div class="glass-card-dark p-6 md:p-10 rounded-[2rem] relative overflow-hidden group">
+          <h4 class="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3 relative z-10">
+            <i data-lucide="users" class="text-blue-400 w-6 h-6"></i> 
+            <span class="lang-es">Target y Objetivos</span><span class="lang-en">Target & Objectives</span>
           </h4>
           
-          <button onclick="openModal('targetDefinido')" class="w-full text-left p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors mb-4 flex justify-between items-center group/btn cursor-pointer">
-            <span class="font-bold text-lg text-white"><span class="lang-es">Ver Detalles del Target</span><span class="lang-en">View Target Details</span></span>
+          <button onclick="openModal('targetDefinido')" class="w-full text-left p-4 md:p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/20 transition-colors mb-4 flex justify-between items-center group/btn cursor-pointer">
+            <span class="font-bold text-base md:text-lg text-white"><span class="lang-es">Ver Detalles del Target</span><span class="lang-en">View Target Details</span></span>
             <i data-lucide="chevron-right" class="text-blue-400 group-hover/btn:translate-x-1 transition-transform w-5 h-5"></i>
           </button>
 
-          <div class="p-6 bg-gradient-to-r from-blue-600/20 to-blue-900/20 rounded-2xl border border-blue-500/30 backdrop-blur-sm mt-4">
-            <p class="text-sm text-blue-300 font-bold uppercase tracking-widest mb-2"><span class="lang-es">KPI Principal</span><span class="lang-en">Main KPI</span></p>
-            <p class="text-3xl font-black text-white"><span class="lang-es">Compra “alta venta en E-Commerce”</span><span class="lang-en">Purchase “high E-Commerce sales”</span></p>
-            <p class="text-blue-200/70 mt-3 text-sm border-t border-blue-500/20 pt-3">
-              <span class="lang-es">KPIs Secundarios: Ticket promedio, ROAS, Nuevos clientes.</span><span class="lang-en">Secondary KPIs: Average Ticket, ROAS, New customers.</span>
+          <div class="p-5 md:p-6 bg-gradient-to-r from-blue-600/20 to-blue-900/20 rounded-xl border border-blue-500/30 backdrop-blur-sm mt-4">
+            <p class="text-xs md:text-sm text-blue-300 font-bold uppercase tracking-widest mb-2"><span class="lang-es">KPI Principal</span><span class="lang-en">Main KPI</span></p>
+            <p class="text-2xl md:text-3xl font-black text-white tracking-tighter"><span class="lang-es">Compra “alta venta en E-Commerce”</span><span class="lang-en">Purchase “high E-Commerce sales”</span></p>
+            <p class="text-blue-200/70 mt-3 text-xs md:text-sm border-t border-blue-500/20 pt-3">
+              <span class="lang-es">KPIs Secundarios: Ticket promedio, ROAS, Nuevos clientes.</span>
+              <span class="lang-en">Secondary KPIs: Average Ticket, ROAS, New customers.</span>
             </p>
           </div>
         </div>
@@ -236,103 +285,129 @@
   </section>
 
   <!-- 3. Estrategia -->
-  <section id="estrategia" class="py-32 bg-white relative">
+  <section id="estrategia" class="py-24 md:py-32 bg-white relative">
     <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-200 to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
-        <div class="reveal-left order-2 lg:order-1 h-[600px] rounded-[3rem] overflow-hidden shadow-2xl relative group">
-          <img src="https://media.discordapp.net/attachments/1020791454852984863/1476985556616352038/ChatGPT_Image_27_feb_2026_10_53_04.png?ex=69a31d7d&is=69a1cbfd&hm=c842617243ae371d696fb51c19d9b4dfa66972dafd204d5f620e81153425a457&=&format=webp&quality=lossless&width=620&height=930" alt="FreshBox Proveedor Confiable" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]"/>
+      <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div class="reveal-left order-2 lg:order-1 h-64 md:h-[600px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative group">
+          <img src="https://media.discordapp.net/attachments/1020791454852984863/1476985556616352038/ChatGPT_Image_27_feb_2026_10_53_04.png?ex=69a31d7d&is=69a1cbfd&hm=c842617243ae371d696fb51c19d9b4dfa66972dafd204d5f620e81153425a457&" alt="FreshBox Proveedor Confiable" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]" loading="lazy"/>
         </div>
         
         <div class="reveal-right order-1 lg:order-2 text-black">
           <div class="flex items-center gap-3 mb-4">
             <i data-lucide="globe" class="text-blue-600 w-5 h-5"></i>
-            <h2 class="text-xs font-bold tracking-[0.2em] text-blue-600 uppercase"><span class="lang-es">Estrategia Central</span><span class="lang-en">Central Strategy</span></h2>
+            <h2 class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-blue-600 uppercase">
+              <span class="lang-es">Estrategia Central</span><span class="lang-en">Central Strategy</span>
+            </h2>
           </div>
-          <h3 class="text-5xl md:text-6xl font-bold tracking-tighter text-black mb-8 leading-tight">
+          <h3 class="text-4xl md:text-6xl font-bold tracking-tighter text-black mb-6 md:mb-8 leading-tight">
             <span class="lang-es">El proveedor confiable.</span><span class="lang-en">The reliable provider.</span>
           </h3>
-          <p class="text-xl text-neutral-600 mb-10 leading-relaxed font-light">
+          <p class="text-lg md:text-xl text-neutral-600 mb-8 md:mb-10 leading-relaxed font-light">
             <span class="lang-es">FreshBox es el proveedor inteligente: el que evita filas, garantiza conservación y <strong>profesionaliza la temporada</strong>.</span>
             <span class="lang-en">FreshBox is the smart provider: avoids lines, guarantees conservation and <strong>professionalizes the season</strong>.</span>
           </p>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="p-8 bg-red-50 rounded-[2rem] border border-red-100 shadow-sm">
-              <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-2"><span class="lang-es">NO hablar de:</span><span class="lang-en">DO NOT talk about:</span></h4>
-              <p class="text-2xl font-bold text-red-900 line-through decoration-red-400"><span class="lang-es">Religión</span><span class="lang-en">Religion</span></p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
+            <div class="p-6 md:p-8 bg-red-50 rounded-2xl md:rounded-[2rem] border border-red-100 shadow-sm text-center md:text-left">
+              <h4 class="text-[10px] md:text-xs font-bold text-red-500 uppercase tracking-widest mb-2"><span class="lang-es">NO hablar de:</span><span class="lang-en">DO NOT talk about:</span></h4>
+              <p class="text-xl md:text-2xl font-bold text-red-900 line-through decoration-red-400"><span class="lang-es">Religión</span><span class="lang-en">Religion</span></p>
             </div>
-            <div class="p-8 bg-blue-50 rounded-[2rem] border border-blue-100 shadow-sm">
-              <h4 class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2"><span class="lang-es">SÍ hablar de:</span><span class="lang-en">DO talk about:</span></h4>
-              <p class="text-lg font-bold text-blue-900 leading-tight"><span class="lang-es">Familia, Calidad, Elección inteligente, Seguridad.</span><span class="lang-en">Family, Quality, Smart choice, Safety.</span></p>
+            <div class="p-6 md:p-8 bg-blue-50 rounded-2xl md:rounded-[2rem] border border-blue-100 shadow-sm text-center md:text-left">
+              <h4 class="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-2"><span class="lang-es">SÍ hablar de:</span><span class="lang-en">DO talk about:</span></h4>
+              <p class="text-base md:text-lg font-bold text-blue-900 leading-tight"><span class="lang-es">Familia, Calidad, Elección inteligente, Seguridad.</span><span class="lang-en">Family, Quality, Smart choice, Safety.</span></p>
             </div>
           </div>
 
-          <button onclick="openModal('tonoVoz')" class="w-full bg-[#F5F5F7] text-black border border-neutral-200 px-8 py-4 rounded-full font-semibold hover:bg-neutral-200 transition-all flex items-center justify-center gap-3 cursor-pointer">
-            <span class="lang-es">Ver Tono de Voz</span><span class="lang-en">View Tone of Voice</span> <i data-lucide="chevron-right" class="w-4.5 h-4.5"></i>
+          <button onclick="openModal('tonoVoz')" class="w-full bg-[#F5F5F7] text-black border border-neutral-200 px-6 py-4 rounded-full font-semibold hover:bg-neutral-200 transition-all flex items-center justify-center gap-3 cursor-pointer">
+            <span class="lang-es">Ver Tono de Voz</span><span class="lang-en">View Tone of Voice</span> 
+            <i data-lucide="chevron-right" class="w-4 h-4 text-black"></i>
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Pilares de Contenido Interactivos -->
-  <section id="pilares" class="py-32 px-4 max-w-7xl mx-auto">
-    <div class="reveal-scale text-center mb-20">
+  <!-- 4. Pilares de Contenido -->
+  <section id="pilares" class="py-24 md:py-32 px-4 max-w-7xl mx-auto">
+    <div class="reveal-scale text-center mb-16 md:mb-20">
       <div class="inline-flex items-center justify-center gap-2 mb-4">
         <i data-lucide="layers" class="text-neutral-400 w-5 h-5"></i>
-        <h2 class="text-xs font-bold tracking-[0.2em] text-[#86868B] uppercase"><span class="lang-es">Arquitectura</span><span class="lang-en">Architecture</span></h2>
+        <h2 class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-[#86868B] uppercase">
+          <span class="lang-es">Arquitectura</span><span class="lang-en">Architecture</span>
+        </h2>
       </div>
-      <h3 class="text-5xl md:text-7xl font-bold tracking-tighter text-black"><span class="lang-es">7. Pilares de Contenido</span><span class="lang-en">7. Content Pillars</span></h3>
-      <p class="text-neutral-500 mt-4"><span class="lang-es">Haz clic en cada pilar para ver el contenido estratégico detallado.</span><span class="lang-en">Click on each pillar to view detailed strategic content.</span></p>
+      <h3 class="text-4xl md:text-7xl font-bold tracking-tighter text-black">
+        <span class="lang-es">Pilares de Contenido</span><span class="lang-en">Content Pillars</span>
+      </h3>
+      <p class="text-sm md:text-base text-neutral-500 mt-4">
+        <span class="lang-es">Haz clic en cada pilar para ver el contenido estratégico detallado.</span>
+        <span class="lang-en">Click on each pillar to view detailed strategic content.</span>
+      </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 text-black">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-black">
       
       <!-- Pilar 1 -->
-      <div onclick="openModal('pilar1')" class="reveal-scale reveal-delay-1 p-10 bg-white rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer relative overflow-hidden">
-        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform">
+      <div onclick="openModal('pilar1')" class="reveal-scale reveal-delay-1 p-8 md:p-10 bg-white rounded-3xl md:rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer relative overflow-hidden">
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-50 text-blue-600 rounded-2xl md:rounded-3xl flex items-center justify-center mb-6 md:mb-8 shadow-inner group-hover:scale-110 transition-transform">
           <i data-lucide="shield-check" class="w-8 h-8"></i>
         </div>
-        <h4 class="text-3xl font-bold mb-2 tracking-tight"><span class="lang-es">Pilar 1</span><span class="lang-en">Pillar 1</span></h4>
-        <p class="text-2xl font-medium text-neutral-600 mb-6"><span class="lang-es">Autoridad y Seguridad</span><span class="lang-en">Authority and Safety</span></p>
-        <div class="flex items-center gap-2 text-blue-600 font-bold group-hover:underline">
+        <h4 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">
+          <span class="lang-es">Pilar 1</span><span class="lang-en">Pillar 1</span>
+        </h4>
+        <p class="text-lg md:text-2xl font-medium text-neutral-600 mb-6">
+          <span class="lang-es">Autoridad y Seguridad</span><span class="lang-en">Authority and Safety</span>
+        </p>
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-sm md:text-base group-hover:underline">
           <span class="lang-es">Ver desarrollo del pilar</span><span class="lang-en">View pillar details</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </div>
       </div>
 
       <!-- Pilar 2 -->
-      <div onclick="openModal('pilar2')" class="reveal-scale reveal-delay-2 p-10 bg-white rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer relative overflow-hidden">
-        <div class="w-20 h-20 bg-orange-50 text-orange-600 rounded-3xl flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform">
+      <div onclick="openModal('pilar2')" class="reveal-scale reveal-delay-2 p-8 md:p-10 bg-white rounded-3xl md:rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer relative overflow-hidden">
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-orange-50 text-orange-600 rounded-2xl md:rounded-3xl flex items-center justify-center mb-6 md:mb-8 shadow-inner group-hover:scale-110 transition-transform">
           <i data-lucide="chef-hat" class="w-8 h-8"></i>
         </div>
-        <h4 class="text-3xl font-bold mb-2 tracking-tight"><span class="lang-es">Pilar 2</span><span class="lang-en">Pillar 2</span></h4>
-        <p class="text-2xl font-medium text-neutral-600 mb-6"><span class="lang-es">Experiencia en Casa</span><span class="lang-en">Home Experience</span></p>
-        <div class="flex items-center gap-2 text-blue-600 font-bold group-hover:underline">
+        <h4 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">
+          <span class="lang-es">Pilar 2</span><span class="lang-en">Pillar 2</span>
+        </h4>
+        <p class="text-lg md:text-2xl font-medium text-neutral-600 mb-6">
+          <span class="lang-es">Experiencia en Casa</span><span class="lang-en">Home Experience</span>
+        </p>
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-sm md:text-base group-hover:underline">
           <span class="lang-es">Ver desarrollo del pilar</span><span class="lang-en">View pillar details</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </div>
       </div>
 
       <!-- Pilar 3 -->
-      <div onclick="openModal('pilar3')" class="reveal-scale reveal-delay-3 p-10 bg-white rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer relative overflow-hidden">
-        <div class="w-20 h-20 bg-teal-50 text-teal-600 rounded-3xl flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform">
+      <div onclick="openModal('pilar3')" class="reveal-scale reveal-delay-3 p-8 md:p-10 bg-white rounded-3xl md:rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer relative overflow-hidden">
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-teal-50 text-teal-600 rounded-2xl md:rounded-3xl flex items-center justify-center mb-6 md:mb-8 shadow-inner group-hover:scale-110 transition-transform">
           <i data-lucide="package-open" class="w-8 h-8"></i>
         </div>
-        <h4 class="text-3xl font-bold mb-2 tracking-tight"><span class="lang-es">Pilar 3</span><span class="lang-en">Pillar 3</span></h4>
-        <p class="text-2xl font-medium text-neutral-600 mb-6"><span class="lang-es">Producto y Kits</span><span class="lang-en">Product and Kits</span></p>
-        <div class="flex items-center gap-2 text-blue-600 font-bold group-hover:underline">
+        <h4 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">
+          <span class="lang-es">Pilar 3</span><span class="lang-en">Pillar 3</span>
+        </h4>
+        <p class="text-lg md:text-2xl font-medium text-neutral-600 mb-6">
+          <span class="lang-es">Producto y Kits</span><span class="lang-en">Product and Kits</span>
+        </p>
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-sm md:text-base group-hover:underline">
           <span class="lang-es">Ver desarrollo del pilar</span><span class="lang-en">View pillar details</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </div>
       </div>
 
       <!-- Pilar 4 -->
-      <div onclick="openModal('pilar4')" class="reveal-scale reveal-delay-4 p-10 bg-white rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer relative overflow-hidden">
-        <div class="w-20 h-20 bg-red-50 text-red-600 rounded-3xl flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform">
+      <div onclick="openModal('pilar4')" class="reveal-scale reveal-delay-4 p-8 md:p-10 bg-white rounded-3xl md:rounded-[2.5rem] border border-neutral-100 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer relative overflow-hidden">
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-red-50 text-red-600 rounded-2xl md:rounded-3xl flex items-center justify-center mb-6 md:mb-8 shadow-inner group-hover:scale-110 transition-transform">
           <i data-lucide="zap" class="w-8 h-8"></i>
         </div>
-        <h4 class="text-3xl font-bold mb-2 tracking-tight"><span class="lang-es">Pilar 4</span><span class="lang-en">Pillar 4</span></h4>
-        <p class="text-2xl font-medium text-neutral-600 mb-6"><span class="lang-es">Hard Sell</span><span class="lang-en">Hard Sell</span></p>
-        <div class="flex items-center gap-2 text-blue-600 font-bold group-hover:underline">
+        <h4 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">
+          <span class="lang-es">Pilar 4</span><span class="lang-en">Pillar 4</span>
+        </h4>
+        <p class="text-lg md:text-2xl font-medium text-neutral-600 mb-6">
+          <span class="lang-es">Hard Sell</span><span class="lang-en">Hard Sell</span>
+        </p>
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-sm md:text-base group-hover:underline">
           <span class="lang-es">Ver desarrollo del pilar</span><span class="lang-en">View pillar details</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </div>
       </div>
@@ -341,112 +416,155 @@
   </section>
 
   <!-- 5. Ecosistema Web / Canales -->
-  <section id="ecosistema" class="py-32 bg-[#0A0A0B] text-white relative overflow-hidden">
+  <section id="ecosistema" class="py-24 md:py-32 bg-[#0A0A0B] text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 relative z-10">
-      <div class="reveal-left mb-16">
-        <h3 class="text-5xl md:text-6xl font-bold tracking-tighter mb-4"><span class="lang-es">10. Canales de Distribución</span><span class="lang-en">10. Distribution Channels</span></h3>
-        <p class="text-xl text-neutral-400"><span class="lang-es">Haz clic en cada canal para ver su rol en la estrategia.</span><span class="lang-en">Click on each channel to view its strategic role.</span></p>
+      <div class="reveal-left mb-12 md:mb-16 text-center md:text-left">
+        <h3 class="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+          <span class="lang-es">10. Canales de Distribución</span><span class="lang-en">10. Distribution Channels</span>
+        </h3>
+        <p class="text-base md:text-xl text-neutral-400">
+          <span class="lang-es">Haz clic en cada canal para ver su rol en la estrategia.</span><span class="lang-en">Click on each channel to view its strategic role.</span>
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
         
-        <div onclick="openModal('canalIG')" class="glass-card-dark p-8 rounded-3xl cursor-pointer hover:bg-white/10 transition-all text-center group">
-          <div class="text-pink-500 flex justify-center mb-6 group-hover:scale-110 transition-transform"><i data-lucide="smartphone" class="w-8 h-8"></i></div>
-          <h4 class="font-bold text-2xl mb-2">Instagram</h4>
-          <p class="text-sm text-neutral-400"><span class="lang-es">Ver rol estratégico</span><span class="lang-en">View strategic role</span></p>
+        <div onclick="openModal('canalIG')" class="glass-card-dark p-8 md:p-10 rounded-3xl cursor-pointer hover:bg-white/10 transition-all text-center group">
+          <div class="text-pink-500 flex justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform"><i data-lucide="smartphone" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+          <h4 class="font-bold text-xl md:text-2xl mb-2">Instagram</h4>
+          <p class="text-[10px] md:text-sm text-neutral-400 uppercase tracking-widest font-bold opacity-60 group-hover:opacity-100 transition-opacity">
+            <span class="lang-es">Ver rol estratégico</span><span class="lang-en">View strategic role</span>
+          </p>
         </div>
 
-        <div onclick="openModal('canalFB')" class="glass-card-dark p-8 rounded-3xl cursor-pointer hover:bg-white/10 transition-all text-center group">
-          <div class="text-blue-500 flex justify-center mb-6 group-hover:scale-110 transition-transform"><i data-lucide="users" class="w-8 h-8"></i></div>
-          <h4 class="font-bold text-2xl mb-2">Facebook</h4>
-          <p class="text-sm text-neutral-400"><span class="lang-es">Ver rol estratégico</span><span class="lang-en">View strategic role</span></p>
+        <div onclick="openModal('canalFB')" class="glass-card-dark p-8 md:p-10 rounded-3xl cursor-pointer hover:bg-white/10 transition-all text-center group">
+          <div class="text-blue-500 flex justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform"><i data-lucide="users" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+          <h4 class="font-bold text-xl md:text-2xl mb-2">Facebook</h4>
+          <p class="text-[10px] md:text-sm text-neutral-400 uppercase tracking-widest font-bold opacity-60 group-hover:opacity-100 transition-opacity">
+            <span class="lang-es">Ver rol estratégico</span><span class="lang-en">View strategic role</span>
+          </p>
         </div>
 
-        <div onclick="openModal('canalYT')" class="glass-card-dark p-8 rounded-3xl cursor-pointer hover:bg-white/10 transition-all text-center group">
-          <div class="text-red-500 flex justify-center mb-6 group-hover:scale-110 transition-transform"><i data-lucide="video" class="w-8 h-8"></i></div>
-          <h4 class="font-bold text-2xl mb-2">YouTube</h4>
-          <p class="text-sm text-neutral-400"><span class="lang-es">Ver rol estratégico</span><span class="lang-en">View strategic role</span></p>
+        <div onclick="openModal('canalYT')" class="glass-card-dark p-8 md:p-10 rounded-3xl cursor-pointer hover:bg-white/10 transition-all text-center group">
+          <div class="text-red-500 flex justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform"><i data-lucide="video" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+          <h4 class="font-bold text-xl md:text-2xl mb-2">YouTube</h4>
+          <p class="text-[10px] md:text-sm text-neutral-400 uppercase tracking-widest font-bold opacity-60 group-hover:opacity-100 transition-opacity">
+            <span class="lang-es">Ver rol estratégico</span><span class="lang-en">View strategic role</span>
+          </p>
         </div>
 
       </div>
 
-      <div class="reveal-scale p-10 bg-gradient-to-r from-blue-900/40 to-teal-900/40 border border-blue-500/20 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="reveal-scale p-8 md:p-10 bg-gradient-to-r from-blue-900/40 to-teal-900/40 border border-blue-500/20 rounded-[2rem] md:rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left">
         <div>
-          <p class="text-sm text-blue-300 font-bold uppercase tracking-widest mb-2"><span class="lang-es">Destino Final</span><span class="lang-en">Final Destination</span></p>
-          <h4 class="text-4xl font-bold text-white mb-2"><span class="lang-es">Landing Page Dedicada</span><span class="lang-en">Dedicated Landing Page</span></h4>
-          <p class="text-neutral-300"><span class="lang-es">Todas las campañas dirigirán a un hub central optimizado para conversión.</span><span class="lang-en">All campaigns will lead to a central hub optimized for conversion.</span></p>
+          <p class="text-[10px] md:text-sm text-blue-300 font-bold uppercase tracking-widest mb-2">
+            <span class="lang-es">Destino Final</span><span class="lang-en">Final Destination</span>
+          </p>
+          <h4 class="text-2xl md:text-4xl font-bold text-white mb-2 tracking-tighter">
+            <span class="lang-es">Landing Page Dedicada</span><span class="lang-en">Dedicated Landing Page</span>
+          </h4>
+          <p class="text-sm md:text-base text-neutral-300 max-w-lg">
+            <span class="lang-es">Todas las campañas dirigirán a un hub central optimizado para conversión.</span>
+            <span class="lang-en">All campaigns will lead to a central hub optimized for conversion.</span>
+          </p>
         </div>
-        <div class="px-8 py-4 bg-black/50 border border-white/10 rounded-2xl w-full md:w-auto overflow-hidden">
-          <code class="text-xl text-teal-300 font-mono">/temporada-mariscos</code>
+        <div class="px-6 py-3 md:px-8 md:py-4 bg-black/50 border border-white/10 rounded-2xl w-full md:w-auto overflow-hidden text-center">
+          <code class="text-sm md:text-xl text-teal-300 font-mono truncate block">/temporada-mariscos</code>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 6. Operativa (Timeline) -->
-  <section id="operativa" class="py-32 px-4 bg-white relative">
+  <section id="operativa" class="py-24 md:py-32 px-4 bg-white relative">
     <div class="max-w-5xl mx-auto text-black">
-      <div class="reveal-scale text-center mb-24">
-        <h2 class="text-xs font-bold tracking-[0.2em] text-[#86868B] uppercase mb-4"><span class="lang-es">9. Estructura Temporal</span><span class="lang-en">9. Timeline Structure</span></h2>
-        <h3 class="text-5xl md:text-6xl font-bold tracking-tighter text-black"><span class="lang-es">Campaña 5 Semanas</span><span class="lang-en">5-Week Campaign</span></h3>
-        <p class="text-neutral-500 mt-4"><span class="lang-es">Toca cada fase para ver su objetivo.</span><span class="lang-en">Tap each phase to view its objective.</span></p>
+      <div class="reveal-scale text-center mb-16 md:mb-24">
+        <h2 class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-[#86868B] uppercase mb-4">
+          <span class="lang-es">9. Estructura Temporal</span><span class="lang-en">9. Timeline Structure</span>
+        </h2>
+        <h3 class="text-4xl md:text-6xl font-bold tracking-tighter text-black">
+          <span class="lang-es">Campaña 5 Semanas</span><span class="lang-en">5-Week Campaign</span>
+        </h3>
+        <p class="text-sm md:text-base text-neutral-500 mt-4">
+          <span class="lang-es">Toca cada fase para ver su objetivo.</span><span class="lang-en">Tap each phase to view its objective.</span>
+        </p>
       </div>
 
       <div class="space-y-4">
         
-        <div onclick="openModal('semana1')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center gap-6">
-            <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors">S1</div>
+        <div onclick="openModal('semana1')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col sm:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4 md:gap-6">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">S1</div>
             <div>
-              <h4 class="text-2xl font-bold text-black"><span class="lang-es">Lanzamiento institucional</span><span class="lang-en">Institutional Launch</span></h4>
-              <p class="text-sm text-neutral-500 hidden md:block mt-1"><span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span></p>
+              <h4 class="text-lg md:text-2xl font-bold text-black">
+                <span class="lang-es">Lanzamiento institucional</span><span class="lang-en">Institutional Launch</span>
+              </h4>
+              <p class="text-[10px] md:text-sm text-neutral-500 mt-1 uppercase tracking-widest font-bold">
+                <span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span>
+              </p>
             </div>
           </div>
-          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-6 h-6"></i>
+          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-5 h-5 md:w-6 md:h-6 hidden sm:block"></i>
         </div>
 
-        <div onclick="openModal('semana2')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center gap-6">
-            <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors">S2</div>
+        <div onclick="openModal('semana2')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col sm:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4 md:gap-6">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">S2</div>
             <div>
-              <h4 class="text-2xl font-bold text-black"><span class="lang-es">Kits y primeras ventas</span><span class="lang-en">Kits and early sales</span></h4>
-              <p class="text-sm text-neutral-500 hidden md:block mt-1"><span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span></p>
+              <h4 class="text-lg md:text-2xl font-bold text-black">
+                <span class="lang-es">Kits y primeras ventas</span><span class="lang-en">Kits and early sales</span>
+              </h4>
+              <p class="text-[10px] md:text-sm text-neutral-500 mt-1 uppercase tracking-widest font-bold">
+                <span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span>
+              </p>
             </div>
           </div>
-          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-6 h-6"></i>
+          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-5 h-5 md:w-6 md:h-6 hidden sm:block"></i>
         </div>
 
-        <div onclick="openModal('semana3')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center gap-6">
-            <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors">S3</div>
+        <div onclick="openModal('semana3')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col sm:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4 md:gap-6">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">S3</div>
             <div>
-              <h4 class="text-2xl font-bold text-black"><span class="lang-es">Intensificación</span><span class="lang-en">Intensification</span></h4>
-              <p class="text-sm text-neutral-500 hidden md:block mt-1"><span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span></p>
+              <h4 class="text-lg md:text-2xl font-bold text-black">
+                <span class="lang-es">Intensificación</span><span class="lang-en">Intensification</span>
+              </h4>
+              <p class="text-[10px] md:text-sm text-neutral-500 mt-1 uppercase tracking-widest font-bold">
+                <span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span>
+              </p>
             </div>
           </div>
-          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-6 h-6"></i>
+          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-5 h-5 md:w-6 md:h-6 hidden sm:block"></i>
         </div>
 
-        <div onclick="openModal('semana4')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center gap-6">
-            <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors">S4</div>
+        <div onclick="openModal('semana4')" class="reveal-left bg-red-50 p-6 md:p-8 rounded-2xl md:rounded-3xl border border-red-100 hover:bg-white hover:shadow-xl hover:border-red-200 transition-all cursor-pointer group flex flex-col sm:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4 md:gap-6">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-red-600 border border-neutral-200 group-hover:bg-red-600 group-hover:text-white transition-colors shrink-0">S4</div>
             <div>
-              <h4 class="text-2xl font-bold text-black"><span class="lang-es">Semana Santa (Hard Sell total)</span><span class="lang-en">Holy Week (Full Hard Sell)</span></h4>
-              <p class="text-sm text-neutral-500 hidden md:block mt-1"><span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span></p>
+              <h4 class="text-lg md:text-2xl font-bold text-red-600">
+                <span class="lang-es">Semana Santa (Hard Sell total)</span><span class="lang-en">Holy Week (Full Hard Sell)</span>
+              </h4>
+              <p class="text-[10px] md:text-sm text-red-500 mt-1 uppercase tracking-widest font-bold">
+                <span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span>
+              </p>
             </div>
           </div>
-          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-6 h-6"></i>
+          <i data-lucide="chevron-right" class="text-red-300 group-hover:text-red-500 transition-colors w-5 h-5 md:w-6 md:h-6 hidden sm:block"></i>
         </div>
 
-        <div onclick="openModal('semana5')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="flex items-center gap-6">
-            <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors">S5</div>
+        <div onclick="openModal('semana5')" class="reveal-left bg-[#F5F5F7] p-6 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-100 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col sm:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4 md:gap-6">
+            <div class="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-sm flex items-center justify-center font-bold text-blue-600 border border-neutral-200 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">S5</div>
             <div>
-              <h4 class="text-2xl font-bold text-black"><span class="lang-es">Cierre + continuidad anual</span><span class="lang-en">Closing + annual continuity</span></h4>
-              <p class="text-sm text-neutral-500 hidden md:block mt-1"><span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span></p>
+              <h4 class="text-lg md:text-2xl font-bold text-black">
+                <span class="lang-es">Cierre + continuidad anual</span><span class="lang-en">Closing + annual continuity</span>
+              </h4>
+              <p class="text-[10px] md:text-sm text-neutral-500 mt-1 uppercase tracking-widest font-bold">
+                <span class="lang-es">Ver desglose táctico</span><span class="lang-en">View tactical breakdown</span>
+              </p>
             </div>
           </div>
-          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-6 h-6"></i>
+          <i data-lucide="chevron-right" class="text-neutral-300 group-hover:text-blue-500 transition-colors w-5 h-5 md:w-6 md:h-6 hidden sm:block"></i>
         </div>
 
       </div>
@@ -456,22 +574,30 @@
   <!-- EXTRAS DE CAMPAÑA -->
   <section class="py-24 bg-[#F5F5F7] text-black">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold mb-12"><span class="lang-es">Extras de Campaña</span><span class="lang-en">Campaign Extras</span></h3>
-      <div class="grid md:grid-cols-3 gap-6">
+      <h3 class="text-3xl md:text-4xl font-bold mb-12">
+        <span class="lang-es">Extras de Campaña</span><span class="lang-en">Campaign Extras</span>
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         
-        <div onclick="openModal('extraEmbalaje')" class="reveal-scale bg-white p-8 rounded-3xl shadow-sm border border-neutral-200 cursor-pointer hover:-translate-y-2 hover:shadow-lg transition-all group">
-          <div class="text-blue-500 flex justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="package-open" class="w-8 h-8"></i></div>
-          <h4 class="font-bold text-xl"><span class="lang-es">Embalaje de Temporada</span><span class="lang-en">Seasonal Packaging</span></h4>
+        <div onclick="openModal('extraEmbalaje')" class="reveal-scale bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-neutral-200 cursor-pointer hover:-translate-y-2 hover:shadow-lg transition-all group">
+          <div class="text-blue-500 flex justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="package-open" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+          <h4 class="font-bold text-lg md:text-xl">
+            <span class="lang-es">Embalaje de Temporada</span><span class="lang-en">Seasonal Packaging</span>
+          </h4>
         </div>
 
-        <div onclick="openModal('extraMerch')" class="reveal-scale bg-white p-8 rounded-3xl shadow-sm border border-neutral-200 cursor-pointer hover:-translate-y-2 hover:shadow-lg transition-all group">
-          <div class="text-blue-500 flex justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="shopping-bag" class="w-8 h-8"></i></div>
-          <h4 class="font-bold text-xl"><span class="lang-es">Merch Oficial</span><span class="lang-en">Official Merch</span></h4>
+        <div onclick="openModal('extraMerch')" class="reveal-scale bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-neutral-200 cursor-pointer hover:-translate-y-2 hover:shadow-lg transition-all group">
+          <div class="text-blue-500 flex justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="shopping-bag" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+          <h4 class="font-bold text-lg md:text-xl">
+            <span class="lang-es">Merch Oficial</span><span class="lang-en">Official Merch</span>
+          </h4>
         </div>
 
-        <div onclick="openModal('extraRecetario')" class="reveal-scale bg-white p-8 rounded-3xl shadow-sm border border-neutral-200 cursor-pointer hover:-translate-y-2 hover:shadow-lg transition-all group">
-          <div class="text-blue-500 flex justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="file-text" class="w-8 h-8"></i></div>
-          <h4 class="font-bold text-xl"><span class="lang-es">Recetario Digital</span><span class="lang-en">Digital Recipe Book</span></h4>
+        <div onclick="openModal('extraRecetario')" class="reveal-scale bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-neutral-200 cursor-pointer hover:-translate-y-2 hover:shadow-lg transition-all group">
+          <div class="text-blue-500 flex justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="file-text" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+          <h4 class="font-bold text-lg md:text-xl">
+            <span class="lang-es">Recetario Digital</span><span class="lang-en">Digital Recipe Book</span>
+          </h4>
         </div>
 
       </div>
@@ -479,76 +605,88 @@
   </section>
 
   <!-- 7. Alianza -->
-  <section id="alianza" class="py-40 bg-white relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/60 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10 text-black">
-      <div class="reveal-scale text-center mb-24">
-        <h3 class="text-5xl md:text-7xl font-bold tracking-tighter text-black mb-8">
+  <section id="alianza" class="py-32 md:py-40 bg-white relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-blue-50/60 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10 text-center text-black">
+      <div class="reveal-scale mb-16 md:mb-24">
+        <h3 class="text-4xl md:text-7xl font-bold tracking-tighter text-black mb-6 md:mb-8">
           <span class="lang-es">Una visión compartida.</span><span class="lang-en">A shared vision.</span>
         </h3>
-        <p class="text-xl md:text-2xl text-neutral-500 font-light max-w-4xl mx-auto leading-relaxed">
+        <p class="text-lg md:text-2xl text-neutral-500 font-light max-w-4xl mx-auto leading-relaxed text-balance">
           <span class="lang-es">Transformando la industria de los mariscos a través de la narrativa digital y la excelencia operativa. <strong>Origen Media</strong> y <strong>FreshBox</strong> unidos en 2026.</span>
           <span class="lang-en">Transforming the seafood industry through digital storytelling and operational excellence. <strong>Origen Media</strong> and <strong>FreshBox</strong> united in 2026.</span>
         </p>
       </div>
-      <div class="reveal-scale reveal-delay-2 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 relative">
-        <div class="flex flex-col items-center gap-6 group z-10 float">
-          <div class="w-56 h-56 md:w-72 md:h-72 rounded-[3.5rem] bg-[#F9F9FB] p-10 flex items-center justify-center shadow-2xl border border-neutral-100">
-            <img src="https://cdn.discordapp.com/attachments/1020791454852984863/1476947384842850416/8ef4a208-55a0-494a-9e63-cd75fbac7621.png?ex=69a2f9f0&is=69a1a870&hm=9fde0f81e496fbb4471752318c85f2fd72966d75fff31088f38e268224fe8a24&" alt="Origen Media" class="w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"/>
+      <div class="reveal-scale reveal-delay-2 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-24 relative">
+        <div class="flex flex-col items-center gap-4 md:gap-6 group z-10 float">
+          <div class="w-40 h-40 md:w-72 md:h-72 rounded-[2rem] md:rounded-[3.5rem] bg-[#F9F9FB] p-6 md:p-10 flex items-center justify-center shadow-xl md:shadow-2xl border border-neutral-100 transition-all group-hover:shadow-blue-200/50 group-hover:-translate-y-2">
+            <img src="https://cdn.discordapp.com/attachments/1020791454852984863/1476947384842850416/8ef4a208-55a0-494a-9e63-cd75fbac7621.png?ex=69a2f9f0&is=69a1a870&hm=9fde0f81e496fbb4471752318c85f2fd72966d75fff31088f38e268224fe8a24&" alt="Origen Media" class="w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" loading="lazy"/>
           </div>
-          <p class="text-sm font-bold tracking-[0.2em] uppercase text-neutral-400"><span class="lang-es">Agencia Creativa</span><span class="lang-en">Creative Agency</span></p>
+          <p class="text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase text-neutral-400">
+            <span class="lang-es">Agencia Creativa</span><span class="lang-en">Creative Agency</span>
+          </p>
         </div>
-        <div class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[400px] h-[2px] bg-gradient-to-r from-transparent via-neutral-200 to-transparent -z-10"></div>
-        <div class="hidden md:flex items-center justify-center w-20 h-20 rounded-full bg-black text-white shadow-2xl z-10 relative">
-          <i data-lucide="heart" fill="currentColor" class="w-7 h-7"></i>
+        <div class="hidden md:flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-black text-white shadow-2xl z-10 relative">
+          <i data-lucide="heart" fill="currentColor" class="w-6 h-6 md:w-7 md:h-7"></i>
         </div>
-        <div class="flex flex-col items-center gap-6 group z-10 float-delayed">
-          <div class="w-56 h-56 md:w-72 md:h-72 rounded-[3.5rem] bg-[#F9F9FB] p-10 flex items-center justify-center shadow-2xl border border-neutral-100">
-            <img src="https://media.discordapp.net/attachments/1020791454852984863/1476947385220464731/8c1c8370d600acce6d112c56f438faaetplv-tiktokx-cropcenter10801080.png?ex=69a2f9f0&is=69a1a870&hm=4d2a64fe59023c7c62eb1a6d3ad6b873d45f0f981e837a76594181af48a6238b&=&format=webp&quality=lossless&width=250&height=250" alt="FreshBox" class="w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"/>
+        <div class="flex flex-col items-center gap-4 md:gap-6 group z-10 float-delayed">
+          <div class="w-40 h-40 md:w-72 md:h-72 rounded-[2rem] md:rounded-[3.5rem] bg-[#F9F9FB] p-6 md:p-10 flex items-center justify-center shadow-xl md:shadow-2xl border border-neutral-100 transition-all group-hover:shadow-blue-200/50 group-hover:-translate-y-2">
+            <img src="https://media.discordapp.net/attachments/1020791454852984863/1476947385220464731/8c1c8370d600acce6d112c56f438faaetplv-tiktokx-cropcenter10801080.png?ex=69a2f9f0&is=69a1a870&hm=4d2a64fe59023c7c62eb1a6d3ad6b873d45f0f981e837a76594181af48a6238b&=&format=webp&quality=lossless&width=250&height=250" alt="FreshBox" class="w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" loading="lazy"/>
           </div>
-          <p class="text-sm font-bold tracking-[0.2em] uppercase text-neutral-400"><span class="lang-es">Distribución Premium</span><span class="lang-en">Premium Logistics</span></p>
+          <p class="text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase text-neutral-400">
+            <span class="lang-es">Distribución Premium</span><span class="lang-en">Premium Logistics</span>
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 8. Resultados -->
-  <section id="resultados" class="py-32 px-4 bg-[#111113] text-white">
+  <section id="resultados" class="py-24 md:py-32 px-4 bg-[#111113] text-white">
     <div class="max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="grid lg:grid-cols-2 gap-16 md:gap-20 items-center">
         <div class="reveal-left">
-          <h3 class="text-4xl md:text-5xl font-bold mb-10 tracking-tighter">
+          <h3 class="text-3xl md:text-5xl font-bold mb-8 md:mb-10 tracking-tighter">
              <span class="lang-es">12. Resultados Esperados</span><span class="lang-en">12. Expected Results</span>
           </h3>
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
-              <i data-lucide="check-circle" class="text-blue-400 mb-4 w-7 h-7"></i>
-              <span class="block font-bold text-lg"><span class="lang-es">Pico fuerte de facturación</span><span class="lang-en">Strong sales peak</span></span>
+          <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+            <div class="p-5 md:p-6 bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+              <i data-lucide="check-circle" class="text-blue-400 mb-3 md:mb-4 w-6 h-6 md:w-7 md:h-7"></i>
+              <span class="block font-bold text-base md:text-lg"><span class="lang-es">Pico fuerte de facturación</span><span class="lang-en">Strong sales peak</span></span>
             </div>
-            <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
-              <i data-lucide="check-circle" class="text-blue-400 mb-4 w-7 h-7"></i>
-              <span class="block font-bold text-lg"><span class="lang-es">Incremento de ticket promedio</span><span class="lang-en">Average ticket increase</span></span>
+            <div class="p-5 md:p-6 bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+              <i data-lucide="check-circle" class="text-blue-400 mb-3 md:mb-4 w-6 h-6 md:w-7 md:h-7"></i>
+              <span class="block font-bold text-base md:text-lg"><span class="lang-es">Incremento de ticket promedio</span><span class="lang-en">Average ticket increase</span></span>
             </div>
-            <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
-              <i data-lucide="check-circle" class="text-blue-400 mb-4 w-7 h-7"></i>
-              <span class="block font-bold text-lg"><span class="lang-es">Crecimiento base clientes</span><span class="lang-en">Customer base growth</span></span>
+            <div class="p-5 md:p-6 bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+              <i data-lucide="check-circle" class="text-blue-400 mb-3 md:mb-4 w-6 h-6 md:w-7 md:h-7"></i>
+              <span class="block font-bold text-base md:text-lg"><span class="lang-es">Crecimiento base clientes</span><span class="lang-en">Customer base growth</span></span>
             </div>
-            <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
-              <i data-lucide="check-circle" class="text-blue-400 mb-4 w-7 h-7"></i>
-              <span class="block font-bold text-lg"><span class="lang-es">Posicionamiento anual</span><span class="lang-en">Annual positioning</span></span>
+            <div class="p-5 md:p-6 bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+              <i data-lucide="check-circle" class="text-blue-400 mb-3 md:mb-4 w-6 h-6 md:w-7 md:h-7"></i>
+              <span class="block font-bold text-base md:text-lg"><span class="lang-es">Posicionamiento anual</span><span class="lang-en">Annual positioning</span></span>
             </div>
           </div>
         </div>
         
-        <div class="reveal-right p-12 md:p-16 bg-white text-black rounded-[3rem] text-center shadow-2xl">
-          <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-8 border border-blue-100">
-            <i data-lucide="target" class="text-blue-600 w-8 h-8"></i>
+        <div class="reveal-right p-8 md:p-16 bg-white text-black rounded-[2rem] md:rounded-[3rem] text-center shadow-2xl relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-teal-400"></div>
+          <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 border border-blue-100">
+            <i data-lucide="target" class="text-blue-600 w-6 h-6 md:w-8 md:h-8"></i>
           </div>
-          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-4"><span class="lang-es">13. Decisión Estratégica</span><span class="lang-en">13. Strategic Decision</span></h4>
-          <p class="text-3xl font-bold leading-tight mb-8"><span class="lang-es">Esta no es una campaña táctica.</span><span class="lang-en">This is not a tactical campaign.</span></p>
-          <div class="p-6 bg-blue-600 text-white rounded-2xl shadow-lg">
-            <p class="text-xl md:text-2xl font-bold"><span class="lang-es">Es una plataforma anual repetible.</span><span class="lang-en">It's a repeatable annual platform.</span></p>
-            <p class="mt-4 text-blue-200"><span class="lang-es">Si se ejecuta bien este año: Se institucionaliza cada temporada de cuaresma.</span><span class="lang-en">If executed well this year: Every Lenten season becomes institutionalized.</span></p>
+          <h4 class="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-4">
+            <span class="lang-es">13. Decisión Estratégica</span><span class="lang-en">13. Strategic Decision</span>
+          </h4>
+          <p class="text-2xl md:text-3xl font-bold leading-tight mb-6 md:mb-8 text-black">
+            <span class="lang-es">Esta no es una campaña táctica.</span><span class="lang-en">This is not a tactical campaign.</span>
+          </p>
+          <div class="p-5 md:p-6 bg-blue-600 text-white rounded-xl md:rounded-2xl shadow-lg">
+            <p class="text-lg md:text-2xl font-bold">
+              <span class="lang-es">Es una plataforma anual repetible.</span><span class="lang-en">It's a repeatable annual platform.</span>
+            </p>
+            <p class="mt-3 md:mt-4 text-sm md:text-base text-blue-200">
+              <span class="lang-es">Si se ejecuta bien este año: Se institucionaliza cada temporada de cuaresma.</span><span class="lang-en">If executed well this year: Every Lenten season becomes institutionalized.</span>
+            </p>
           </div>
         </div>
       </div>
@@ -556,25 +694,27 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-24 bg-[#F5F5F7] text-center text-black">
+  <footer class="py-16 md:py-24 bg-[#F5F5F7] text-center text-black">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10 tracking-tighter text-black"><span class="lang-es">La calidad no es negociable.</span><span class="lang-en">Quality is non-negotiable.</span></h2>
-      <p class="text-neutral-400 text-sm font-medium uppercase tracking-widest">© 2026 Documento Estratégico Privado • Origen Media x FreshBox</p>
+      <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-10 tracking-tighter">
+        <span class="lang-es">La calidad no es negociable.</span><span class="lang-en">Quality is non-negotiable.</span>
+      </h2>
+      <p class="text-neutral-400 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] md:tracking-[0.4em]">© 2026 Documento Estratégico Privado • Origen Media x FreshBox</p>
     </div>
   </footer>
 
   <!-- MODAL GLOBAL -->
   <div id="modal-container" class="fixed inset-0 z-[100] hidden items-center justify-center px-4 modal-overlay bg-black/60 backdrop-blur-sm" onclick="closeModal()">
-    <div class="bg-white rounded-[2.5rem] w-full max-w-2xl p-6 md:p-12 shadow-2xl modal-content max-h-[90vh] overflow-y-auto relative" onclick="event.stopPropagation()">
+    <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] w-full max-w-2xl p-6 md:p-12 shadow-2xl modal-content max-h-[90vh] overflow-y-auto relative text-black" onclick="event.stopPropagation()">
       
       <!-- Botón cerrar -->
-      <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-neutral-100 rounded-full flex items-center justify-center text-neutral-500 hover:bg-neutral-200 hover:text-black transition-colors">
+      <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-neutral-100 rounded-full flex items-center justify-center text-neutral-500 hover:text-black transition-colors">
         <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6"></i>
       </button>
       
       <!-- Header del modal -->
-      <div class="flex items-center gap-4 mb-6 md:mb-8 pr-12 text-black">
-        <div id="modal-icon-container" class="w-12 h-12 md:w-16 md:h-16 bg-neutral-50 rounded-2xl border border-neutral-100 flex items-center justify-center shrink-0">
+      <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 pr-10 text-black">
+        <div id="modal-icon-container" class="w-12 h-12 md:w-16 md:h-16 bg-neutral-50 rounded-xl md:rounded-2xl border border-neutral-100 flex items-center justify-center shrink-0">
           <!-- Icon injected here -->
         </div>
         <h3 id="modal-title" class="text-xl md:text-3xl font-bold text-black tracking-tight"></h3>
@@ -587,7 +727,7 @@
       
       <!-- Footer del modal -->
       <div class="mt-8 md:mt-10 pt-4 md:pt-6 border-t border-neutral-100 text-center">
-        <button onclick="closeModal()" class="px-6 py-2.5 md:px-8 md:py-3 bg-black text-white font-bold rounded-full hover:bg-neutral-800 transition-colors text-black">
+        <button onclick="closeModal()" class="px-6 py-2.5 md:px-8 md:py-3 bg-black text-white font-bold rounded-full hover:bg-neutral-800 transition-colors text-sm md:text-base">
           <span class="lang-es">Entendido</span><span class="lang-en">Got it</span>
         </button>
       </div>
@@ -595,7 +735,7 @@
   </div>
 
   <!-- LIGHTBOX PARA MEDIA FULLSCREEN (AGRANDAR COSAS) -->
-  <div id="lightbox-container" class="fixed inset-0 z-[200] hidden items-center justify-center px-4 md:px-10 py-10 modal-overlay bg-black/90 backdrop-blur-md" onclick="closeLightbox()">
+  <div id="lightbox-container" class="fixed inset-0 z-[200] hidden items-center justify-center px-2 md:px-10 py-10 modal-overlay bg-black/95 backdrop-blur-md" onclick="closeLightbox()">
     <button onclick="closeLightbox()" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-[210]" title="Cerrar">
       <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6"></i>
     </button>
@@ -629,6 +769,7 @@
     // Lógica Intersection Observer (Animaciones y Menú activo)
     document.addEventListener("DOMContentLoaded", () => {
       
+      // Auto-Detect Language on Load
       initLanguage();
 
       // 1. Observador para el Menú de Navegación (Estricto)
@@ -677,7 +818,6 @@
           el.classList.add('active');
         });
       }, 100);
-
     });
 
     // MOTOR DE TRADUCCIÓN
@@ -694,9 +834,9 @@
       currentLang = currentLang === 'es' ? 'en' : 'es';
       applyLangClass();
       
-      const modal = document.getElementById('modal-container');
-      const activeModal = modal.getAttribute('data-active');
-      if (activeModal && !modal.classList.contains('hidden')) {
+      // Reload active modal to refresh translations if open
+      const activeModal = document.getElementById('modal-container').getAttribute('data-active');
+      if (activeModal && !document.getElementById('modal-container').classList.contains('hidden')) {
          openModal(activeModal);
       }
     }
@@ -707,15 +847,14 @@
       document.getElementById('lang-indicator').innerText = currentLang.toUpperCase();
     }
 
-
     // --- BASE DE DATOS DE MODALES EN ESPAÑOL ---
     const modalsES = {
       cineHero: {
         title: "🎬 Cine Hero: Pieza Central",
         icon: '<i data-lucide="film" class="text-blue-500 w-6 h-6 md:w-8 md:h-8"></i>',
         content: `
-          <div class="space-y-4 text-neutral-600">
-            <h4 class="font-bold text-xl text-black">Título: "Semana de Guardar."</h4>
+          <div class="space-y-4 text-black">
+            <h4 class="font-bold text-lg md:text-xl text-black">Título: "Semana de Guardar."</h4>
             <p><strong>Plataformas:</strong> YouTube + Landing Page</p>
             <p class="font-bold text-black mt-4">Ejes de comunicación:</p>
             <ul class="list-disc pl-5 space-y-2">
@@ -725,20 +864,19 @@
               <li class="text-blue-600 font-bold">¡Ojo! Sin decir explícitamente "Semana Santa".</li>
             </ul>
             <div class="p-4 bg-blue-50 border border-blue-100 rounded-xl mt-4">
-              <p class="font-bold text-blue-800 text-sm uppercase">Cierre del video:</p>
-              <p class="text-lg italic text-blue-900">"La temporada termina. La calidad no."</p>
+              <p class="font-bold text-blue-800 text-xs md:text-sm uppercase">Cierre del video:</p>
+              <p class="text-base md:text-lg italic text-blue-900">"La temporada termina. La calidad no."</p>
             </div>
             <p class="font-bold text-black mt-4">Adaptaciones:</p>
-            <div class="flex gap-2 flex-wrap text-black">
-              <span class="px-3 py-1 bg-neutral-100 rounded-lg text-sm">30 seg conversión</span>
-              <span class="px-3 py-1 bg-neutral-100 rounded-lg text-sm">15 seg remarketing</span>
-              <span class="px-3 py-1 bg-neutral-100 rounded-lg text-sm">6 seg bumper</span>
+            <div class="flex gap-2 flex-wrap text-black mb-6">
+              <span class="px-3 py-1 bg-neutral-100 rounded-lg text-xs md:text-sm">30 seg conversión</span>
+              <span class="px-3 py-1 bg-neutral-100 rounded-lg text-xs md:text-sm">15 seg remarketing</span>
+              <span class="px-3 py-1 bg-neutral-100 rounded-lg text-xs md:text-sm">6 seg bumper</span>
             </div>
 
-            <!-- Video de Referencia Gordon Ramsay -->
             <p class="font-bold text-black mt-6 pt-6 border-t border-neutral-200">Video de Referencia (Look & Feel):</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center border border-neutral-200 group h-64 md:h-[300px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1477023821604323489/Gordon_Ramsay_Cooks_Up_A_Delicious_Shake_And_Bake_Pork_Chop_-_Gordon_Ramsay_720p_h264.mp4?ex=69a34120&is=69a1efa0&hm=b17fce512b969cd64e9ec0458ba230bba8908243f274fe9e9474b5b75aa0b46c&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -757,22 +895,26 @@
         icon: '<i data-lucide="users" class="text-blue-500 w-6 h-6 md:w-8 md:h-8"></i>',
         content: `
           <div class="space-y-6">
-            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 text-black">
-              <h4 class="font-bold text-blue-900 text-lg mb-3">Target Primario</h4>
-              <ul class="list-disc pl-5 space-y-2 text-blue-800">
+            <div class="bg-blue-50 p-5 md:p-6 rounded-2xl border border-blue-100 text-black">
+              <h4 class="font-bold text-blue-900 text-base md:text-lg mb-3">Target Primario</h4>
+              <ul class="list-disc pl-5 space-y-2 text-blue-800 text-sm md:text-base">
                 <li>Familias 30–55 años</li>
                 <li>NSE medio–alto y alto</li>
                 <li>Compradores digitales</li>
                 <li>Valoran calidad y conveniencia por encima del precio</li>
               </ul>
             </div>
-            <div class="bg-neutral-50 p-6 rounded-2xl border border-neutral-200 text-black">
-              <h4 class="font-bold text-neutral-900 text-lg mb-3">Target Secundario</h4>
-              <ul class="list-disc pl-5 space-y-2 text-neutral-700">
+            <div class="bg-neutral-50 p-5 md:p-6 rounded-2xl border border-neutral-200 text-black">
+              <h4 class="font-bold text-neutral-900 text-base md:text-lg mb-3">Target Secundario</h4>
+              <ul class="list-disc pl-5 space-y-2 text-neutral-700 text-sm md:text-base">
                 <li>Foodies</li>
                 <li>Amantes de la cocina en casa</li>
                 <li>Clientes recurrentes FreshBox</li>
               </ul>
+            </div>
+            <div class="bg-blue-600 p-5 md:p-6 rounded-2xl text-white mt-4 shadow-lg">
+               <p class="text-xs md:text-sm text-blue-200 font-bold uppercase tracking-widest mb-2">KPI Principal</p>
+               <p class="text-xl md:text-2xl font-black">Compra “alta venta en E-Commerce”</p>
             </div>
           </div>
         `
@@ -782,14 +924,14 @@
         icon: '<i data-lucide="megaphone" class="text-purple-500 w-6 h-6 md:w-8 md:h-8"></i>',
         content: `
           <div class="space-y-4">
-            <p class="text-neutral-600 text-lg">Toda la comunicación debe mantener los siguientes atributos:</p>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-purple-50 text-purple-900 font-bold p-4 rounded-xl text-center border border-purple-100">Directo</div>
-              <div class="bg-purple-50 text-purple-900 font-bold p-4 rounded-xl text-center border border-purple-100">Profesional</div>
-              <div class="bg-purple-50 text-purple-900 font-bold p-4 rounded-xl text-center border border-purple-100">Seguro</div>
-              <div class="bg-purple-50 text-purple-900 font-bold p-4 rounded-xl text-center border border-purple-100">Premium</div>
-              <div class="bg-purple-50 text-purple-900 font-bold p-4 rounded-xl text-center border border-purple-100">Sin dramatismo</div>
-              <div class="bg-purple-50 text-purple-900 font-bold p-4 rounded-xl text-center border border-purple-100">Sin moralismo</div>
+            <p class="text-neutral-600 text-sm md:text-lg">Toda la comunicación debe mantener los siguientes atributos:</p>
+            <div class="grid grid-cols-2 gap-3 md:gap-4">
+              <div class="bg-purple-50 text-purple-900 font-bold p-3 md:p-4 rounded-xl text-center border border-purple-100 text-sm md:text-base">Directo</div>
+              <div class="bg-purple-50 text-purple-900 font-bold p-3 md:p-4 rounded-xl text-center border border-purple-100 text-sm md:text-base">Profesional</div>
+              <div class="bg-purple-50 text-purple-900 font-bold p-3 md:p-4 rounded-xl text-center border border-purple-100 text-sm md:text-base">Seguro</div>
+              <div class="bg-purple-50 text-purple-900 font-bold p-3 md:p-4 rounded-xl text-center border border-purple-100 text-sm md:text-base">Premium</div>
+              <div class="bg-purple-50 text-purple-900 font-bold p-3 md:p-4 rounded-xl text-center border border-purple-100 text-sm md:text-base">Sin dramatismo</div>
+              <div class="bg-purple-50 text-purple-900 font-bold p-3 md:p-4 rounded-xl text-center border border-purple-100 text-sm md:text-base">Sin moralismo</div>
             </div>
           </div>
         `
@@ -906,7 +1048,7 @@
             
             <p class="font-bold text-black mb-3 md:mb-4 text-left text-sm md:text-base">Muestra: Instagram Reel</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center mb-6 md:mb-8 border border-neutral-200 group h-64 md:h-[400px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476974504780759111/AQNl6fIC36hpIvuv-C869NsbRF_3ybkujoulxe2Qbqsa9TGPn8CiRGFbLDd6z2DoNcJ-wOromhXmjnZ0gJ0wk1f5.mp4?ex=69a31332&is=69a1c1b2&hm=0b909e2ab78b30e4476631508e04c41dcbed164a7840491d6af50e0b8f04d0c0&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -922,7 +1064,7 @@
             <div class="grid grid-cols-2 gap-4 md:gap-6">
               
               <div class="w-full bg-[#111113] rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm border border-neutral-200 group h-48 md:h-[300px] flex justify-center text-black">
-                <video class="h-full object-contain pointer-events-none" preload="none">
+                <video playsinline webkit-playsinline class="h-full object-contain pointer-events-none" preload="none">
                   <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476983687168921822/FDownloader.Net_AQPcZ83jhkNVnv4zHDR5wTVZBUsNK1mQmGSzM5Frqpr2Is3o4_pQeWRifJnJNQ0waBKd9cmXhPoi8xEskE4cZ_rMF4TE23K_3JESogsZWJnNbg_720p_HD.mp4?ex=69a31bc0&is=69a1ca40&hm=dd129ecfb8bebef1a44a20018084f8276dac6e01f0d6e617d33c12f072982506&" type="video/mp4">
                 </video>
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center cursor-pointer" onclick="openLightbox('video', 'https://cdn.discordapp.com/attachments/1020791454852984863/1476983687168921822/FDownloader.Net_AQPcZ83jhkNVnv4zHDR5wTVZBUsNK1mQmGSzM5Frqpr2Is3o4_pQeWRifJnJNQ0waBKd9cmXhPoi8xEskE4cZ_rMF4TE23K_3JESogsZWJnNbg_720p_HD.mp4?ex=69a31bc0&is=69a1ca40&hm=dd129ecfb8bebef1a44a20018084f8276dac6e01f0d6e617d33c12f072982506&')">
@@ -936,7 +1078,7 @@
               </div>
 
               <div class="w-full bg-[#111113] rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm border border-neutral-200 group h-48 md:h-[300px] flex justify-center text-black">
-                <video class="h-full object-contain pointer-events-none" preload="none">
+                <video playsinline webkit-playsinline class="h-full object-contain pointer-events-none" preload="none">
                   <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476982488097357894/FDownloader.Net_AQMxqtql7o-a6sLTk-VZzWTGX93QmrP-C4_v-Xl9gw6ZZAT2OdhiZx48NP_IeDvAhcYqhVkHLbEpFdC96PiA1YNrWIOBFpjb97xC1uI-FnIUvw_720p_HD.mp4?ex=69a31aa2&is=69a1c922&hm=e666ed009edc98b16b3f7af0f76f1a09550bdaa106230452f91a4ffe0e05ce58&" type="video/mp4">
                 </video>
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center cursor-pointer" onclick="openLightbox('video', 'https://cdn.discordapp.com/attachments/1020791454852984863/1476982488097357894/FDownloader.Net_AQMxqtql7o-a6sLTk-VZzWTGX93QmrP-C4_v-Xl9gw6ZZAT2OdhiZx48NP_IeDvAhcYqhVkHLbEpFdC96PiA1YNrWIOBFpjb97xC1uI-FnIUvw_720p_HD.mp4?ex=69a31aa2&is=69a1c922&hm=e666ed009edc98b16b3f7af0f76f1a09550bdaa106230452f91a4ffe0e05ce58&')">
@@ -966,7 +1108,7 @@
             
             <p class="font-bold text-black mb-3 md:mb-4 text-left text-sm md:text-base">Muestra: Facebook Reel / Video Ad</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center mb-6 md:mb-8 border border-neutral-200 group h-64 md:h-[400px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476975406635684010/FDownloader.Net_AQNlLGmYenBHzSfAJq7SRX0-ggMl12zhyA1K3DPpLJst1SA0XxqXtZKz6S3Z1WEbqAAvHu90KzUxo5F6OQ_wbvmMpKI02m4JRrfnNhOp5ufcsQ_720p_HD.mp4?ex=69a31409&is=69a1c289&hm=7655d66e122cee6ac3e6263b197baa0345028d7f7a816e07eb4c4d3d3f4fd721&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -1031,7 +1173,7 @@
             
             <p class="font-bold text-black mb-3 md:mb-4 text-left text-sm md:text-base">Muestra: Cine Hero / Video Receta</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center mb-6 md:mb-8 border border-neutral-200 group h-64 md:h-[400px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476984801369264343/videoplayback.mp4?ex=69a31cc9&is=69a1cb49&hm=87f37ffd9f420e7dc548c07828265832ba23a484d28d3359a4066e0911698713&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -1161,7 +1303,7 @@
             <!-- Video de Referencia Gordon Ramsay -->
             <p class="font-bold text-black mt-6 pt-6 border-t border-neutral-200">Reference Video (Look & Feel):</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center border border-neutral-200 group h-64 md:h-[300px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1477023821604323489/Gordon_Ramsay_Cooks_Up_A_Delicious_Shake_And_Bake_Pork_Chop_-_Gordon_Ramsay_720p_h264.mp4?ex=69a34120&is=69a1efa0&hm=b17fce512b969cd64e9ec0458ba230bba8908243f274fe9e9474b5b75aa0b46c&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -1321,7 +1463,7 @@
         `
       },
       canalIG: {
-        title: "Instagram 2026",
+        title: "Instagram",
         icon: '<i data-lucide="instagram" class="text-pink-500 w-6 h-6 md:w-8 md:h-8"></i>',
         content: `
           <div class="text-center py-4 md:py-8 text-black">
@@ -1333,7 +1475,7 @@
             
             <p class="font-bold text-black mb-3 md:mb-4 text-left text-sm md:text-base">Sample: Instagram Reel</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center mb-6 md:mb-8 border border-neutral-200 group h-64 md:h-[400px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476974504780759111/AQNl6fIC36hpIvuv-C869NsbRF_3ybkujoulxe2Qbqsa9TGPn8CiRGFbLDd6z2DoNcJ-wOromhXmjnZ0gJ0wk1f5.mp4?ex=69a31332&is=69a1c1b2&hm=0b909e2ab78b30e4476631508e04c41dcbed164a7840491d6af50e0b8f04d0c0&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -1349,7 +1491,7 @@
             <div class="grid grid-cols-2 gap-4 md:gap-6">
               
               <div class="w-full bg-[#111113] rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm border border-neutral-200 group h-48 md:h-[300px] flex justify-center text-black">
-                <video class="h-full object-contain pointer-events-none" preload="none">
+                <video playsinline webkit-playsinline class="h-full object-contain pointer-events-none" preload="none">
                   <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476983687168921822/FDownloader.Net_AQPcZ83jhkNVnv4zHDR5wTVZBUsNK1mQmGSzM5Frqpr2Is3o4_pQeWRifJnJNQ0waBKd9cmXhPoi8xEskE4cZ_rMF4TE23K_3JESogsZWJnNbg_720p_HD.mp4?ex=69a31bc0&is=69a1ca40&hm=dd129ecfb8bebef1a44a20018084f8276dac6e01f0d6e617d33c12f072982506&" type="video/mp4">
                 </video>
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center cursor-pointer" onclick="openLightbox('video', 'https://cdn.discordapp.com/attachments/1020791454852984863/1476983687168921822/FDownloader.Net_AQPcZ83jhkNVnv4zHDR5wTVZBUsNK1mQmGSzM5Frqpr2Is3o4_pQeWRifJnJNQ0waBKd9cmXhPoi8xEskE4cZ_rMF4TE23K_3JESogsZWJnNbg_720p_HD.mp4?ex=69a31bc0&is=69a1ca40&hm=dd129ecfb8bebef1a44a20018084f8276dac6e01f0d6e617d33c12f072982506&')">
@@ -1363,7 +1505,7 @@
               </div>
 
               <div class="w-full bg-[#111113] rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm border border-neutral-200 group h-48 md:h-[300px] flex justify-center text-black">
-                <video class="h-full object-contain pointer-events-none" preload="none">
+                <video playsinline webkit-playsinline class="h-full object-contain pointer-events-none" preload="none">
                   <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476982488097357894/FDownloader.Net_AQMxqtql7o-a6sLTk-VZzWTGX93QmrP-C4_v-Xl9gw6ZZAT2OdhiZx48NP_IeDvAhcYqhVkHLbEpFdC96PiA1YNrWIOBFpjb97xC1uI-FnIUvw_720p_HD.mp4?ex=69a31aa2&is=69a1c922&hm=e666ed009edc98b16b3f7af0f76f1a09550bdaa106230452f91a4ffe0e05ce58&" type="video/mp4">
                 </video>
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center cursor-pointer" onclick="openLightbox('video', 'https://cdn.discordapp.com/attachments/1020791454852984863/1476982488097357894/FDownloader.Net_AQMxqtql7o-a6sLTk-VZzWTGX93QmrP-C4_v-Xl9gw6ZZAT2OdhiZx48NP_IeDvAhcYqhVkHLbEpFdC96PiA1YNrWIOBFpjb97xC1uI-FnIUvw_720p_HD.mp4?ex=69a31aa2&is=69a1c922&hm=e666ed009edc98b16b3f7af0f76f1a09550bdaa106230452f91a4ffe0e05ce58&')">
@@ -1393,7 +1535,7 @@
             
             <p class="font-bold text-black mb-3 md:mb-4 text-left text-sm md:text-base">Sample: Conversion Ad / Reel</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center mb-6 md:mb-8 border border-neutral-200 group h-64 md:h-[400px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476975406635684010/FDownloader.Net_AQNlLGmYenBHzSfAJq7SRX0-ggMl12zhyA1K3DPpLJst1SA0XxqXtZKz6S3Z1WEbqAAvHu90KzUxo5F6OQ_wbvmMpKI02m4JRrfnNhOp5ufcsQ_720p_HD.mp4?ex=69a31409&is=69a1c289&hm=7655d66e122cee6ac3e6263b197baa0345028d7f7a816e07eb4c4d3d3f4fd721&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -1458,7 +1600,7 @@
             
             <p class="font-bold text-black mb-3 md:mb-4 text-left text-sm md:text-base">Sample: Cine Hero / Video Recipe</p>
             <div class="w-full bg-[#111113] rounded-2xl overflow-hidden relative shadow-xl flex justify-center mb-6 md:mb-8 border border-neutral-200 group h-64 md:h-[400px]">
-              <video controls class="h-full max-w-full object-contain" preload="none">
+              <video controls playsinline webkit-playsinline class="h-full max-w-full object-contain" preload="none">
                 <source src="https://cdn.discordapp.com/attachments/1020791454852984863/1476984801369264343/videoplayback.mp4?ex=69a31cc9&is=69a1cb49&hm=87f37ffd9f420e7dc548c07828265832ba23a484d28d3359a4066e0911698713&" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 md:top-3 md:left-3 bg-black/60 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] uppercase tracking-wider font-bold flex items-center gap-2 border border-white/20">
@@ -1578,7 +1720,7 @@
       if (type === 'image') {
         html = '<img src="' + src + '" class="max-w-[95vw] max-h-[90vh] object-contain rounded-xl shadow-2xl">';
       } else if (type === 'video') {
-        html = '<video controls autoplay class="max-w-[95vw] max-h-[90vh] object-contain rounded-xl shadow-2xl"><source src="' + src + '" type="video/mp4"></video>';
+        html = '<video controls autoplay playsinline webkit-playsinline class="max-w-[95vw] max-h-[90vh] object-contain rounded-xl shadow-2xl"><source src="' + src + '" type="video/mp4"></video>';
       } else if (type === 'iframe') {
         html = '<div class="w-full max-w-6xl h-[90vh] bg-white rounded-2xl overflow-hidden flex flex-col shadow-2xl border border-white/20"><div class="w-full bg-neutral-100 border-b border-neutral-300 h-10 flex items-center px-4 shrink-0 justify-between"><div class="flex gap-1.5 w-12"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div><div class="bg-white border border-neutral-200 rounded-md px-4 py-1 text-xs text-neutral-500 font-mono flex items-center justify-center gap-2 w-1/2 truncate"><i data-lucide="lock" class="w-3 h-3 text-neutral-400"></i> ' + src + '</div><div class="w-12"></div></div><iframe src="' + src + '" class="w-full flex-1 border-none bg-neutral-50"></iframe></div>';
       }
